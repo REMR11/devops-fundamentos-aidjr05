@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ETAPAS_DEVOPS, calcularProgreso, formatearSaludo } from '../public/logic.js';
+import {
+  ETAPAS_DEVOPS,
+  calcularProgreso,
+  formatearSaludo,
+} from '../public/logic.js';
 
 test('el ciclo incluye las 7 etapas principales de DevOps', () => {
   assert.equal(ETAPAS_DEVOPS.length, 7);

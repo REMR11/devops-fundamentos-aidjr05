@@ -17,7 +17,7 @@ writeFileSync(
   JSON.stringify(
     {
       app: 'devops-fundamentos-aidjr05',
-      builtAt: new Date().toISOString()
+      builtAt: new Date().toISOString(),
     },
     null,
     2

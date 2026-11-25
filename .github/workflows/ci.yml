@@ -22,9 +22,16 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
+
+      - name: Instalar dependencias exactamente como en package-lock.json
+        run: npm ci
 
       - name: Ejecutar pruebas automáticas
         run: npm test
+
+      - name: Verificar formato con Prettier
+        run: npm run format:check
 
       - name: Construir sitio estático en dist/
         run: npm run build

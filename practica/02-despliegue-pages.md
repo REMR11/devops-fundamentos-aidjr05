@@ -6,7 +6,7 @@
 
 1. En tu fork en GitHub, entra a **Settings** (pestaña arriba a la derecha).
 2. En el menú lateral izquierdo, haz clic en **Pages**.
-3. En **Build and deployment → Source**, elige **GitHub Actions** (muy importante: **no** elijas *Deploy from a branch*).
+3. En **Build and deployment → Source**, elige **GitHub Actions** (muy importante: **no** elijas _Deploy from a branch_).
 
 ## Pasos
 
@@ -20,5 +20,5 @@
 
 ## ¿Qué aprendiste?
 
-- CD (*Despliegue Continuo*) automatiza el paso de "tengo el código listo en `main`" a "ya está publicado para los usuarios".
+- CD (_Despliegue Continuo_) automatiza el paso de "tengo el código listo en `main`" a "ya está publicado para los usuarios".
 - Gracias a `needs: build` y `npm test` dentro del job `build`, si los tests fallan el sitio publicado **no se rompe**.

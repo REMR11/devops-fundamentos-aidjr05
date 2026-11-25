@@ -36,5 +36,5 @@
 
 ## ¿Qué aprendiste?
 
-- CI (*Integración Continua*) evita que un cambio roto entre a `main`.
+- CI (_Integración Continua_) evita que un cambio roto entre a `main`.
 - No dependes de "en mi máquina sí funcionaba": un servidor limpio prueba el proyecto en cada PR.

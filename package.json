@@ -6,6 +6,8 @@
   "scripts": {
     "test": "node --test",
     "build": "node scripts/build.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "preview": "npx --yes serve dist"
   },
   "keywords": [
@@ -18,5 +20,8 @@
   "license": "MIT",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
   }
 }
