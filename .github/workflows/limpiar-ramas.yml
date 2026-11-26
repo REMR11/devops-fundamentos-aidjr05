@@ -1,0 +1,33 @@
+# Borra automáticamente la rama de un PR cuando se hace merge a `dev`,
+# pero SOLO si el nombre de la rama usa un prefijo de Conventional Commits.
+# Ejemplos que se borran:    feat/login, fix/boton-roto, chore/deps, docs/readme
+# Ejemplos que NO se borran: dev, main, mi-rama, prueba/algo
+name: Limpiar ramas al hacer merge a dev
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [dev]
+
+permissions:
+  contents: write # necesario para borrar ramas
+
+jobs:
+  borrar-rama:
+    # Solo si el PR se mezcló (no si se cerró sin merge) y viene de este mismo repo (no de un fork)
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Revisar prefijo y borrar la rama
+        env:
+          RAMA: ${{ github.event.pull_request.head.ref }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Rama mezclada: $RAMA"
+          PATRON='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9-]+\))?[/-].+'
+          if [[ "$RAMA" =~ $PATRON ]]; then
+            echo "Prefijo convencional detectado: se borra la rama."
+            gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/$RAMA"
+          else
+            echo "La rama no usa un prefijo convencional: se conserva."
+          fi
